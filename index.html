@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gerador de Códigos - ASM Gestão Clínica</title>
+<title>Gerador 5000 Códigos AA - ASM Gestão Clínica</title>
 <style>
 * {
   margin: 0;
@@ -41,6 +41,30 @@ h1 {
   font-size: 14px;
 }
 
+.info-box {
+  background: #ebf8ff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #1e3a5f;
+  font-size: 14px;
+  color: #2c5282;
+}
+
+.info-box strong {
+  color: #1e3a5f;
+}
+
+.warning-box {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #92400e;
+}
+
 .form-group {
   margin-bottom: 20px;
 }
@@ -52,17 +76,13 @@ label {
   color: #2d3748;
 }
 
-input, select {
+input {
   width: 100%;
   padding: 12px;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
   font-size: 16px;
-}
-
-input:focus, select:focus {
-  outline: none;
-  border-color: #1e3a5f;
+  background: #f7fafc;
 }
 
 .btn {
@@ -114,50 +134,14 @@ input:focus, select:focus {
 
 textarea {
   width: 100%;
-  min-height: 300px;
+  min-height: 400px;
   padding: 15px;
   border: 2px solid #e2e8f0;
   border-radius: 8px;
   font-family: monospace;
-  font-size: 11px;
+  font-size: 9px;
   resize: vertical;
   background: #fff;
-}
-
-.codigos-simples {
-  background: white;
-  padding: 15px;
-  border-radius: 5px;
-  font-family: monospace;
-  font-size: 14px;
-  max-height: 300px;
-  overflow-y: auto;
-  border: 1px solid #e2e8f0;
-  margin-top: 15px;
-  white-space: pre-wrap;
-}
-
-.info-box {
-  background: #ebf8ff;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  border-left: 4px solid #1e3a5f;
-  font-size: 14px;
-  color: #2c5282;
-}
-
-.info-box strong {
-  color: #1e3a5f;
-}
-
-.info-box ol {
-  margin-left: 20px;
-  margin-top: 10px;
-}
-
-.info-box li {
-  margin-bottom: 5px;
 }
 
 .stats {
@@ -176,21 +160,8 @@ textarea {
 }
 
 .stat-card h4 {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 5px;
-}
-
-.stat-card p {
-  font-size: 12px;
-}
-
-.footer {
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 2px solid #e2e8f0;
-  font-size: 12px;
-  color: #718096;
 }
 
 .loading {
@@ -223,85 +194,66 @@ textarea {
   display: none;
 }
 
-.error-msg {
-  background: #fed7d7;
-  color: #742a2a;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  display: none;
-}
-
-.warning-box {
-  background: #fef3c7;
-  border-left: 4px solid #f59e0b;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  font-size: 14px;
-  color: #92400e;
-}
-
-.warning-box strong {
-  color: #b45309;
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #e2e8f0;
+  font-size: 12px;
+  color: #718096;
 }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>🔐 Gerador de Códigos ASM</h1>
-  <p class="subtitle">Gerador de 500 códigos para importar no Firebase</p>
-
-  <div class="info-box">
-    <strong>📋 Passo a passo para importar no Firebase:</strong>
-    <ol>
-      <li>Gere os 500 códigos clicando no botão abaixo</li>
-      <li>Copie o JSON gerado (botão "📋 Copiar JSON")</li>
-      <li>Vá no <strong>Firebase Console</strong> → Realtime Database</li>
-      <li>Clique nos <strong>3 pontinhos (⋯)</strong> → Importar JSON</li>
-      <li>Cole o JSON e clique em Importar</li>
-      <li>Pronto! Os códigos estarão no nó <strong>activationCodes</strong></li>
-    </ol>
-  </div>
+  <h1>🔐 Gerador 5000 Códigos AA</h1>
+  <p class="subtitle"><strong>AA</strong> = Andresa Augusto | ASM Gestão Clínica</p>
 
   <div class="warning-box">
-    <strong>⚠️ Atenção:</strong> Este JSON vai criar o nó "activationCodes" com 500 códigos prontos para uso. Cada código pode ser ativado apenas uma vez.
+    <strong>⚠️ IMPORTANTE:</strong> Gere 5000 códigos AGORA com prefixo <strong>AA</strong> (Andresa Augusto). Importe no Firebase uma única vez e nunca mais precise gerar novos!
+  </div>
+
+  <div class="info-box">
+    <strong>📋 Formato dos códigos:</strong><br>
+    • Prefixo: <strong>AA</strong> (Andresa Augusto)<br>
+    • Formato: AA + 6 números (ex: AA000001)<br>
+    • Total: 5000 códigos únicos<br>
+    • Exemplos: AA000001, AA000002, AA123456, AA999999...
+  </div>
+
+  <div class="form-group">
+    <label>Prefixo (fixo: AA - Andresa Augusto)</label>
+    <input type="text" value="AA" readonly style="text-align: center; font-size: 20px; font-weight: bold; color: #1e3a5f;">
   </div>
 
   <div class="form-group">
     <label>Quantidade de Códigos</label>
-    <input type="number" id="quantidade" value="500" min="1" max="5000">
+    <input type="number" id="quantidade" value="5000" readonly style="text-align: center; font-size: 20px; font-weight: bold;">
   </div>
 
-  <div class="form-group">
-    <label>Prefixo (2 letras)</label>
-    <input type="text" id="prefixo" value="SM" maxlength="2" style="text-transform: uppercase;">
-  </div>
-
-  <button class="btn" onclick="gerarCodigos()">🎲 Gerar 500 Códigos para Firebase</button>
+  <button class="btn" onclick="gerarCodigos()">🎲 Gerar 5000 Códigos AA para Firebase</button>
   
   <div class="loading" id="loading">
     <div class="spinner"></div>
-    <p>Gerando 500 códigos únicos...</p>
+    <p>Gerando 5000 códigos AA...<br>Isso pode levar alguns segundos...</p>
   </div>
 
   <div class="success-msg" id="successMsg"></div>
-  <div class="error-msg" id="errorMsg"></div>
 
   <div class="resultado" id="resultado">
     <div class="stats">
       <div class="stat-card">
         <h4 id="totalCodigos">0</h4>
-        <p>Códigos Gerados</p>
+        <p>Códigos AA Gerados</p>
       </div>
       <div class="stat-card">
-        <h4 id="prefixoUsado">SM</h4>
-        <p>Prefixo</p>
+        <h4>AA</h4>
+        <p>Andresa Augusto</p>
       </div>
     </div>
 
-    <h3>📄 JSON para importar no Firebase (COPIE ESTE):</h3>
+    <h3>📄 JSON para importar no Firebase (5000 códigos AA):</h3>
     <textarea id="codigosJson" readonly></textarea>
     
     <div style="display: flex; gap: 10px; margin-top: 15px;">
@@ -309,10 +261,14 @@ textarea {
       <button class="btn btn-danger" onclick="baixarJson()">💾 Baixar arquivo .json</button>
     </div>
 
-    <h3 style="margin-top: 30px;">📋 Lista simples dos códigos:</h3>
-    <div class="codigos-simples" id="codigosLista"></div>
-    
-    <button class="btn btn-secondary" onclick="copiarLista()" style="margin-top: 10px;">📋 Copiar Lista</button>
+    <div class="info-box" style="margin-top: 20px;">
+      <strong>✅ Próximo passo:</strong><br>
+      1. Baixe o arquivo JSON<br>
+      2. Vá no Firebase Console → Realtime Database<br>
+      3. Clique nos 3 pontinhos (⋯) → Importar JSON<br>
+      4. Selecione o arquivo baixado<br>
+      5. Pronto! Seus 5000 códigos AA estão prontos para vender!
+    </div>
   </div>
 
   <div class="footer">
@@ -323,30 +279,18 @@ textarea {
 
 <script>
 function gerarCodigos() {
-  const quantidade = parseInt(document.getElementById('quantidade').value);
-  const prefixo = document.getElementById('prefixo').value.toUpperCase() || 'SM';
-  
-  if (quantidade < 1 || quantidade > 5000) {
-    mostrarErro('Quantidade deve ser entre 1 e 5.000');
-    return;
-  }
-  
-  if (prefixo.length !== 2) {
-    mostrarErro('Prefixo deve ter exatamente 2 letras (ex: SM, AS, PT)');
-    return;
-  }
+  const quantidade = 5000;
+  const prefixo = "AA"; // Andresa Augusto
   
   document.getElementById('loading').style.display = 'block';
   document.getElementById('resultado').style.display = 'none';
   document.getElementById('successMsg').style.display = 'none';
-  document.getElementById('errorMsg').style.display = 'none';
   
   setTimeout(() => {
     const codigosObj = {};
     const usados = new Set();
-    const listaSimples = [];
     let tentativas = 0;
-    const maxTentativas = quantidade * 10;
+    const maxTentativas = quantidade * 50;
     
     while (Object.keys(codigosObj).length < quantidade && tentativas < maxTentativas) {
       tentativas++;
@@ -355,51 +299,36 @@ function gerarCodigos() {
       
       if (!usados.has(codigo)) {
         usados.add(codigo);
-        // Estrutura correta para o Firebase
         codigosObj[codigo] = {
           used: false,
           createdAt: new Date().toISOString()
         };
-        listaSimples.push(codigo);
       }
     }
     
-    // Ordenar códigos
-    listaSimples.sort();
-    
-    // Criar JSON final no formato correto do Firebase com o nó activationCodes
+    // Criar JSON final no formato correto do Firebase
     const firebaseJson = {
       activationCodes: codigosObj
     };
     
-    // Mostrar resultados
     document.getElementById('totalCodigos').textContent = Object.keys(codigosObj).length;
-    document.getElementById('prefixoUsado').textContent = prefixo;
     document.getElementById('codigosJson').value = JSON.stringify(firebaseJson, null, 2);
-    document.getElementById('codigosLista').textContent = listaSimples.join('\n');
     
     document.getElementById('loading').style.display = 'none';
     document.getElementById('resultado').style.display = 'block';
-    mostrarSucesso('✅ ' + Object.keys(codigosObj).length + ' códigos gerados com sucesso! Pronto para importar no Firebase.');
+    document.getElementById('successMsg').textContent = 
+      '✅ ' + Object.keys(codigosObj).length + ' códigos AA gerados com sucesso! Baixe o arquivo e importe no Firebase.';
+    document.getElementById('successMsg').style.display = 'block';
     
-    // Salvar para download
     window.jsonGerado = firebaseJson;
-    window.listaGerada = listaSimples;
-  }, 800);
+  }, 2000);
 }
 
 function copiarJson() {
   const textarea = document.getElementById('codigosJson');
   textarea.select();
   document.execCommand('copy');
-  mostrarSucesso('✅ JSON copiado! Agora vá no Firebase → Importar JSON e cole lá.');
-}
-
-function copiarLista() {
-  const lista = document.getElementById('codigosLista').textContent;
-  navigator.clipboard.writeText(lista).then(() => {
-    mostrarSucesso('✅ Lista de códigos copiada!');
-  });
+  alert('✅ JSON copiado! Agora vá no Firebase → Importar JSON');
 }
 
 function baixarJson() {
@@ -408,26 +337,12 @@ function baixarJson() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'activationCodes-asm-' + new Date().toISOString().slice(0,10) + '.json';
+  a.download = 'activationCodes-AA-5000-' + new Date().toISOString().slice(0,10) + '.json';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  mostrarSucesso('✅ Arquivo JSON baixado! Importe no Firebase.');
-}
-
-function mostrarSucesso(msg) {
-  const div = document.getElementById('successMsg');
-  div.textContent = msg;
-  div.style.display = 'block';
-  setTimeout(() => div.style.display = 'none', 8000);
-}
-
-function mostrarErro(msg) {
-  const div = document.getElementById('errorMsg');
-  div.textContent = '❌ ' + msg;
-  div.style.display = 'block';
-  setTimeout(() => div.style.display = 'none', 5000);
+  alert('✅ Arquivo JSON baixado! Importe no Firebase agora.');
 }
 </script>
 
