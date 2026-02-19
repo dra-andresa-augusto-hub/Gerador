@@ -19,7 +19,7 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   background: white;
   padding: 30px;
@@ -112,23 +112,34 @@ input:focus, select:focus {
   margin-bottom: 15px;
 }
 
-.codigos-lista {
+textarea {
+  width: 100%;
+  min-height: 300px;
+  padding: 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 11px;
+  resize: vertical;
+  background: #fff;
+}
+
+.codigos-simples {
   background: white;
   padding: 15px;
   border-radius: 5px;
   font-family: monospace;
   font-size: 14px;
-  max-height: 400px;
+  max-height: 300px;
   overflow-y: auto;
   border: 1px solid #e2e8f0;
-  margin-bottom: 15px;
+  margin-top: 15px;
   white-space: pre-wrap;
-  word-wrap: break-word;
 }
 
 .info-box {
   background: #ebf8ff;
-  padding: 15px;
+  padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
   border-left: 4px solid #1e3a5f;
@@ -138,6 +149,15 @@ input:focus, select:focus {
 
 .info-box strong {
   color: #1e3a5f;
+}
+
+.info-box ol {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.info-box li {
+  margin-bottom: 5px;
 }
 
 .stats {
@@ -194,17 +214,6 @@ input:focus, select:focus {
   100% { transform: rotate(360deg); }
 }
 
-textarea {
-  width: 100%;
-  min-height: 200px;
-  padding: 15px;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px;
-  font-family: monospace;
-  font-size: 13px;
-  resize: vertical;
-}
-
 .success-msg {
   background: #c6f6d5;
   color: #22543d;
@@ -222,36 +231,59 @@ textarea {
   margin-bottom: 15px;
   display: none;
 }
+
+.warning-box {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #92400e;
+}
+
+.warning-box strong {
+  color: #b45309;
+}
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>🔐 Gerador de Códigos</h1>
-  <p class="subtitle">ASM Gestão Clínica - Dra. Andresa Augusto</p>
+  <h1>🔐 Gerador de Códigos ASM</h1>
+  <p class="subtitle">Gerador de 500 códigos para importar no Firebase</p>
 
   <div class="info-box">
-    <strong>Como funciona:</strong><br>
-    • Gere códigos no formato <strong>SM000000</strong> (SM + 6 números)<br>
-    • Os códigos serão salvos no Firebase para ativação dos clientes<br>
-    • Cada código pode ser usado apenas uma vez, vinculado ao CPF do cliente
+    <strong>📋 Passo a passo para importar no Firebase:</strong>
+    <ol>
+      <li>Gere os 500 códigos clicando no botão abaixo</li>
+      <li>Copie o JSON gerado (botão "📋 Copiar JSON")</li>
+      <li>Vá no <strong>Firebase Console</strong> → Realtime Database</li>
+      <li>Clique nos <strong>3 pontinhos (⋯)</strong> → Importar JSON</li>
+      <li>Cole o JSON e clique em Importar</li>
+      <li>Pronto! Os códigos estarão no nó <strong>activationCodes</strong></li>
+    </ol>
+  </div>
+
+  <div class="warning-box">
+    <strong>⚠️ Atenção:</strong> Este JSON vai criar o nó "activationCodes" com 500 códigos prontos para uso. Cada código pode ser ativado apenas uma vez.
   </div>
 
   <div class="form-group">
     <label>Quantidade de Códigos</label>
-    <input type="number" id="quantidade" value="500" min="1" max="10000">
+    <input type="number" id="quantidade" value="500" min="1" max="5000">
   </div>
 
   <div class="form-group">
-    <label>Prefixo (deixe "SM" para padrão)</label>
+    <label>Prefixo (2 letras)</label>
     <input type="text" id="prefixo" value="SM" maxlength="2" style="text-transform: uppercase;">
   </div>
 
-  <button class="btn" onclick="gerarCodigos()">🎲 Gerar Códigos Aleatórios</button>
+  <button class="btn" onclick="gerarCodigos()">🎲 Gerar 500 Códigos para Firebase</button>
   
   <div class="loading" id="loading">
     <div class="spinner"></div>
-    <p>Gerando códigos...</p>
+    <p>Gerando 500 códigos únicos...</p>
   </div>
 
   <div class="success-msg" id="successMsg"></div>
@@ -269,18 +301,18 @@ textarea {
       </div>
     </div>
 
-    <h3>📋 Lista de Códigos (JSON para Firebase)</h3>
+    <h3>📄 JSON para importar no Firebase (COPIE ESTE):</h3>
     <textarea id="codigosJson" readonly></textarea>
     
     <div style="display: flex; gap: 10px; margin-top: 15px;">
       <button class="btn btn-secondary" onclick="copiarJson()">📋 Copiar JSON</button>
-      <button class="btn btn-danger" onclick="baixarTxt()">💾 Baixar como TXT</button>
+      <button class="btn btn-danger" onclick="baixarJson()">💾 Baixar arquivo .json</button>
     </div>
 
-    <h3 style="margin-top: 30px;">📋 Lista Simples (para planilha)</h3>
-    <div class="codigos-lista" id="codigosLista"></div>
+    <h3 style="margin-top: 30px;">📋 Lista simples dos códigos:</h3>
+    <div class="codigos-simples" id="codigosLista"></div>
     
-    <button class="btn btn-secondary" onclick="copiarLista()">📋 Copiar Lista</button>
+    <button class="btn btn-secondary" onclick="copiarLista()" style="margin-top: 10px;">📋 Copiar Lista</button>
   </div>
 
   <div class="footer">
@@ -294,13 +326,13 @@ function gerarCodigos() {
   const quantidade = parseInt(document.getElementById('quantidade').value);
   const prefixo = document.getElementById('prefixo').value.toUpperCase() || 'SM';
   
-  if (quantidade < 1 || quantidade > 10000) {
-    mostrarErro('Quantidade deve ser entre 1 e 10.000');
+  if (quantidade < 1 || quantidade > 5000) {
+    mostrarErro('Quantidade deve ser entre 1 e 5.000');
     return;
   }
   
   if (prefixo.length !== 2) {
-    mostrarErro('Prefixo deve ter exatamente 2 letras');
+    mostrarErro('Prefixo deve ter exatamente 2 letras (ex: SM, AS, PT)');
     return;
   }
   
@@ -310,83 +342,85 @@ function gerarCodigos() {
   document.getElementById('errorMsg').style.display = 'none';
   
   setTimeout(() => {
-    const codigos = [];
+    const codigosObj = {};
     const usados = new Set();
+    const listaSimples = [];
+    let tentativas = 0;
+    const maxTentativas = quantidade * 10;
     
-    while (codigos.length < quantidade) {
+    while (Object.keys(codigosObj).length < quantidade && tentativas < maxTentativas) {
+      tentativas++;
       const numero = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
       const codigo = prefixo + numero;
       
       if (!usados.has(codigo)) {
         usados.add(codigo);
-        codigos.push({
-          codigo: codigo,
+        // Estrutura correta para o Firebase
+        codigosObj[codigo] = {
           used: false,
           createdAt: new Date().toISOString()
-        });
+        };
+        listaSimples.push(codigo);
       }
     }
     
     // Ordenar códigos
-    codigos.sort((a, b) => a.codigo.localeCompare(b.codigo));
+    listaSimples.sort();
     
-    // Gerar JSON no formato do Firebase
-    const firebaseJson = {};
-    codigos.forEach(c => {
-      firebaseJson[c.codigo] = {
-        used: false,
-        createdAt: c.createdAt
-      };
-    });
+    // Criar JSON final no formato correto do Firebase com o nó activationCodes
+    const firebaseJson = {
+      activationCodes: codigosObj
+    };
     
     // Mostrar resultados
-    document.getElementById('totalCodigos').textContent = codigos.length;
+    document.getElementById('totalCodigos').textContent = Object.keys(codigosObj).length;
     document.getElementById('prefixoUsado').textContent = prefixo;
     document.getElementById('codigosJson').value = JSON.stringify(firebaseJson, null, 2);
-    document.getElementById('codigosLista').textContent = codigos.map(c => c.codigo).join('\n');
+    document.getElementById('codigosLista').textContent = listaSimples.join('\n');
     
     document.getElementById('loading').style.display = 'none';
     document.getElementById('resultado').style.display = 'block';
-    mostrarSucesso(codigos.length + ' códigos gerados com sucesso!');
+    mostrarSucesso('✅ ' + Object.keys(codigosObj).length + ' códigos gerados com sucesso! Pronto para importar no Firebase.');
     
-    // Salvar na variável global para download
-    window.codigosGerados = codigos;
-  }, 500);
+    // Salvar para download
+    window.jsonGerado = firebaseJson;
+    window.listaGerada = listaSimples;
+  }, 800);
 }
 
 function copiarJson() {
   const textarea = document.getElementById('codigosJson');
   textarea.select();
   document.execCommand('copy');
-  mostrarSucesso('JSON copiado para a área de transferência!');
+  mostrarSucesso('✅ JSON copiado! Agora vá no Firebase → Importar JSON e cole lá.');
 }
 
 function copiarLista() {
   const lista = document.getElementById('codigosLista').textContent;
   navigator.clipboard.writeText(lista).then(() => {
-    mostrarSucesso('Lista copiada para a área de transferência!');
+    mostrarSucesso('✅ Lista de códigos copiada!');
   });
 }
 
-function baixarTxt() {
-  const lista = document.getElementById('codigosLista').textContent;
-  const blob = new Blob([lista], { type: 'text/plain' });
+function baixarJson() {
+  const jsonStr = JSON.stringify(window.jsonGerado, null, 2);
+  const blob = new Blob([jsonStr], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'codigos-asm-' + new Date().toISOString().slice(0,10) + '.txt';
+  a.download = 'activationCodes-asm-' + new Date().toISOString().slice(0,10) + '.json';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
-  mostrarSucesso('Arquivo baixado com sucesso!');
+  mostrarSucesso('✅ Arquivo JSON baixado! Importe no Firebase.');
 }
 
 function mostrarSucesso(msg) {
   const div = document.getElementById('successMsg');
-  div.textContent = '✅ ' + msg;
+  div.textContent = msg;
   div.style.display = 'block';
-  setTimeout(() => div.style.display = 'none', 5000);
+  setTimeout(() => div.style.display = 'none', 8000);
 }
 
 function mostrarErro(msg) {
